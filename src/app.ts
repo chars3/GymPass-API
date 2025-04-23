@@ -1,13 +1,8 @@
+/* eslint-disable prettier/prettier */
 import fastify from 'fastify'
-import { PrismaClient } from 'generated/prisma'
+import { appRoutes } from './http/routes'
 
 export const app = fastify()
 
-const prisma = new PrismaClient()
+app.register(appRoutes)
 
-prisma.user.create({
-  data: {
-    name: 'Charles jose',
-    email: 'chars@mail.com',
-  },
-})
